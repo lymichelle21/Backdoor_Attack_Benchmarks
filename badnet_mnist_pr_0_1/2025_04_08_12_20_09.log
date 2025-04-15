@@ -1,0 +1,1649 @@
+2025-04-08:12:20:09 [INFO    ] [prototype.py:124] {'amp': False,
+ 'attack': 'badnet',
+ 'attack_label_trans': 'all2one',
+ 'attack_target': 0,
+ 'batch_size': 128,
+ 'bd_yaml_path': './config/attack/badnet/default.yaml',
+ 'client_optimizer': 'sgd',
+ 'dataset': 'mnist',
+ 'dataset_path': './data/mnist',
+ 'device': 'cuda',
+ 'epochs': 100,
+ 'frequency_save': 0,
+ 'img_size': (28, 28, 1),
+ 'input_channel': 1,
+ 'input_height': 28,
+ 'input_width': 28,
+ 'lr': 0.01,
+ 'lr_scheduler': 'CosineAnnealingLR',
+ 'model': 'preactresnet18',
+ 'non_blocking': True,
+ 'num_classes': 10,
+ 'num_workers': 4,
+ 'patch_mask_path': './resource/badnet/trigger_image.png',
+ 'pin_memory': True,
+ 'pratio': 0.1,
+ 'prefetch': False,
+ 'random_seed': 0,
+ 'save_folder_name': 'badnet_mnist_pr_0_1',
+ 'save_path': './record/badnet_mnist_pr_0_1',
+ 'sgd_momentum': 0.9,
+ 'terminal_info': ['./attack/badnet.py',
+                   '--yaml_path',
+                   './config/attack/prototype/mnist.yaml',
+                   '--save_folder_name',
+                   'badnet_mnist_pr_0_1'],
+ 'wd': 0.0005,
+ 'yaml_path': './config/attack/prototype/mnist.yaml'}
+2025-04-08:12:20:09 [DEBUG   ] [prototype.py:126] Only INFO or above level log will show in cmd. DEBUG level log only will show in log file.
+2025-04-08:12:20:10 [DEBUG   ] [prototype.py:130] {'git hash': None,
+ 'last 3 log': 'commit d9195f4e93605587a156cfa2526100dc3650e567\n'
+               'Author: Shixiong '
+               '<112705766+Shixiong-Li@users.noreply.github.com>\n'
+               'Date:   Wed Feb 12 19:51:54 2025 -0500\n'
+               '\n'
+               '    Update README.md\n'
+               '\n'
+               'commit c30abac0ad618ebb85ca7c9382c30ae6c75a1c8e\n'
+               'Author: Shixiong '
+               '<112705766+Shixiong-Li@users.noreply.github.com>\n'
+               'Date:   Wed Feb 12 19:41:13 2025 -0500\n'
+               '\n'
+               '    Add files via upload\n'
+               '\n'
+               'commit d884f70aa4a17a0896c411a949ab4bae8e7de4b2\n'
+               'Author: Shixiong '
+               '<112705766+Shixiong-Li@users.noreply.github.com>\n'
+               'Date:   Wed Feb 12 19:39:45 2025 -0500\n'
+               '\n'
+               '    Add files via upload',
+ 'status': 'On branch main\n'
+           "Your branch is up to date with 'origin/main'.\n"
+           '\n'
+           'Changes not staged for commit:\n'
+           '  (use "git add <file>..." to update what will be committed)\n'
+           '  (use "git restore <file>..." to discard changes in working '
+           'directory)\n'
+           '\tmodified:   attack/badnet.py\n'
+           '\tmodified:   attack/openTrigger.py\n'
+           '\tmodified:   attack/prototype.py\n'
+           '\tmodified:   config/attack/OpenTrigger/default.yaml\n'
+           '\tmodified:   models/__pycache__/preact_resnet.cpython-38.pyc\n'
+           '\tmodified:   psoOptimization/optimizaNoiseCifar100.py\n'
+           '\tmodified:   psoOptimization/trainSurrogateModel.py\n'
+           '\tmodified:   utils/bd_img_transform/patch.py\n'
+           '\n'
+           'Untracked files:\n'
+           '  (use "git add <file>..." to include in what will be committed)\n'
+           '\tMiniconda3-latest-Linux-x86_64.sh\n'
+           '\tattack/__pycache__/\n'
+           '\tattack/fiba.py\n'
+           '\tconfig/attack/fiba/\n'
+           '\tconfig/attack/prototype/mnist.yaml\n'
+           '\tdata/\n'
+           '\toutput/\n'
+           '\trecord/badnet_cifar_100_pr_01_again/\n'
+           '\trecord/badnet_cifar_100_pr_0_05/\n'
+           '\trecord/badnet_cifar_100_pr_0_1/\n'
+           '\trecord/badnet_cifar_10_pr_0_05/\n'
+           '\trecord/badnet_cifar_10_pr_0_1/\n'
+           '\trecord/badnet_cifar_10_pr_0_1_again/\n'
+           '\trecord/badnet_mnist_pr_0_05/\n'
+           '\trecord/badnet_mnist_pr_0_1/\n'
+           '\trecord/openTrigger_cifar_100_pr_0_05/\n'
+           '\trecord/openTrigger_cifar_100_pr_0_1/\n'
+           '\trecord/openTrigger_cifar_100_pr_0_1_no_blend/\n'
+           '\trecord/openTrigger_cifar_10_pr_0_05/\n'
+           '\trecord/openTrigger_cifar_10_pr_0_1/\n'
+           '\trecord/openTrigger_cifar_10_pr_0_1_no_blend/\n'
+           '\tresource/OpenTrigger/cifar100_triggers/\n'
+           '\tresource/fiba/\n'
+           '\tsurrogate_densenet161_cifar100.pth\n'
+           '\tutils/__pycache__/\n'
+           '\tutils/aggregate_block/__pycache__/\n'
+           '\tutils/bd_img_transform/__pycache__/\n'
+           '\tutils/bd_label_transform/__pycache__/\n'
+           '\n'
+           'no changes added to commit (use "git add" and/or "git commit -a")'}
+2025-04-08:12:20:10 [INFO    ] [badnet.py:111] stage1 start
+2025-04-08:12:20:10 [DEBUG   ] [prototype.py:152] dataset_and_transform_generate done
+2025-04-08:12:20:10 [DEBUG   ] [bd_dataset_v2.py:69] Not DatasetFolder or ImageFolder, so iter through
+2025-04-08:12:20:12 [DEBUG   ] [bd_dataset_v2.py:69] Not DatasetFolder or ImageFolder, so iter through
+2025-04-08:12:20:12 [DEBUG   ] [backdoor_generate_poison_index.py:35] Reminder: plz note that if p_num or pratio exceed the number of possible candidate samples
+ then only maximum number of samples will be applied
+2025-04-08:12:20:12 [DEBUG   ] [backdoor_generate_poison_index.py:36] Reminder: priority p_num > pratio, and choosing fix number of sample is prefered if possible 
+2025-04-08:12:20:12 [INFO    ] [backdoor_generate_poison_index.py:61] poison num:6000.0,real pratio:0.1
+2025-04-08:12:20:12 [DEBUG   ] [badnet.py:141] poison train idx is saved
+2025-04-08:12:20:12 [INFO    ] [bd_dataset_v2.py:134] save file format is .png
+2025-04-08:12:20:37 [DEBUG   ] [backdoor_generate_poison_index.py:35] Reminder: plz note that if p_num or pratio exceed the number of possible candidate samples
+ then only maximum number of samples will be applied
+2025-04-08:12:20:37 [DEBUG   ] [backdoor_generate_poison_index.py:36] Reminder: priority p_num > pratio, and choosing fix number of sample is prefered if possible 
+2025-04-08:12:20:37 [INFO    ] [backdoor_generate_poison_index.py:61] poison num:9020.0,real pratio:0.902
+2025-04-08:12:20:37 [INFO    ] [bd_dataset_v2.py:134] save file format is .png
+2025-04-08:12:21:13 [INFO    ] [badnet.py:199] stage2 start
+2025-04-08:12:21:13 [DEBUG   ] [model_trainer_generate.py:59] image_size ONLY apply for vit!!!
+If you use vit make sure you set the image size!
+2025-04-08:12:21:13 [DEBUG   ] [model_trainer_generate.py:65] Make sure you want PreActResNet18, which is NOT resnet18.
+2025-04-08:12:21:16 [DEBUG   ] [trainer_cls.py:1765] This class REQUIRE bd dataset to implement overwrite methods. This is NOT a general class for all cls task.
+2025-04-08:12:21:16 [INFO    ] [trainer_cls.py:972] Do NOT set the settings/parameters attr manually after you start training!
+You may break the relationship between them.
+2025-04-08:12:21:17 [INFO    ] [trainer_cls.py:1030] ('epoch_now:0, '
+ 'batch_now:0self.amp:False,self.criterion:CrossEntropyLoss(),self.optimizer:SGD '
+ '(\n'
+ 'Parameter Group 0\n'
+ '    dampening: 0\n'
+ '    differentiable: False\n'
+ '    foreach: None\n'
+ '    fused: None\n'
+ '    initial_lr: 0.01\n'
+ '    lr: 0.01\n'
+ '    maximize: False\n'
+ '    momentum: 0.9\n'
+ '    nesterov: False\n'
+ '    weight_decay: 0.0005\n'
+ "),self.scheduler:{'T_max': 100, 'eta_min': 0, 'base_lrs': [0.01], "
+ "'last_epoch': 0, 'verbose': False, '_step_count': 1, "
+ "'_get_lr_called_within_step': False, '_last_lr': [0.01]},self.scaler:{})")
+2025-04-08:12:21:58 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 41.12852764129639 s
+2025-04-08:12:22:07 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.001139844296810391,
+ 'clean_test_loss_avg_over_batch': 0.08084512864463503,
+ 'epoch': 0,
+ 'test_acc': 0.9794,
+ 'test_asr': 0.9998891352549889,
+ 'test_ra': 0.00011086474501108647,
+ 'train_acc': 0.8690738514957265,
+ 'train_acc_clean_only': 0.903106742094037,
+ 'train_asr_bd_only': 0.5626982801803306,
+ 'train_epoch_loss_avg_over_batch': 0.422362215227933,
+ 'train_ra_bd_only': 0.49958256804140927}
+2025-04-08:12:22:08 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:22:08 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:22:37 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 29.143242835998535 s
+2025-04-08:12:22:45 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0005039601211445213,
+ 'clean_test_loss_avg_over_batch': 0.04634230614557296,
+ 'epoch': 1,
+ 'test_acc': 0.9867,
+ 'test_asr': 0.9998891352549889,
+ 'test_ra': 0.00011086474501108647,
+ 'train_acc': 0.9491185897435898,
+ 'train_acc_clean_only': 0.9836038208290828,
+ 'train_asr_bd_only': 0.638670896643847,
+ 'train_epoch_loss_avg_over_batch': 0.19292680849122185,
+ 'train_ra_bd_only': 0.45700450826515276}
+2025-04-08:12:22:45 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:22:46 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:23:19 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 34.002814531326294 s
+2025-04-08:12:23:29 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0012735279224088257,
+ 'clean_test_loss_avg_over_batch': 0.07991751123078261,
+ 'epoch': 2,
+ 'test_acc': 0.9767,
+ 'test_asr': 0.9998891352549889,
+ 'test_ra': 0.00011086474501108647,
+ 'train_acc': 0.9537259615384616,
+ 'train_acc_clean_only': 0.9885754557762569,
+ 'train_asr_bd_only': 0.639766081871345,
+ 'train_epoch_loss_avg_over_batch': 0.17356479005553785,
+ 'train_ra_bd_only': 0.4556390977443609}
+2025-04-08:12:23:29 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:23:29 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:24:05 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 35.94017195701599 s
+2025-04-08:12:24:14 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0010602276748280749,
+ 'clean_test_loss_avg_over_batch': 0.031479727444415795,
+ 'epoch': 3,
+ 'test_acc': 0.9916,
+ 'test_asr': 0.9997782705099778,
+ 'test_ra': 0.00022172949002217295,
+ 'train_acc': 0.9557458600427351,
+ 'train_acc_clean_only': 0.9909291583965572,
+ 'train_asr_bd_only': 0.6393661384487073,
+ 'train_epoch_loss_avg_over_batch': 0.16771669493208075,
+ 'train_ra_bd_only': 0.45771476230191827}
+2025-04-08:12:24:15 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:24:15 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:24:51 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 35.9868323802948 s
+2025-04-08:12:25:00 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 7.989494886868682e-05,
+ 'clean_test_loss_avg_over_batch': 0.027509203398765267,
+ 'epoch': 4,
+ 'test_acc': 0.9924,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.957832532051282,
+ 'train_acc_clean_only': 0.992154025930666,
+ 'train_asr_bd_only': 0.6489734601902855,
+ 'train_epoch_loss_avg_over_batch': 0.15852440623805308,
+ 'train_ra_bd_only': 0.44817225838758135}
+2025-04-08:12:25:00 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:25:01 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:25:36 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 35.95035099983215 s
+2025-04-08:12:25:46 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00027393846134991307,
+ 'clean_test_loss_avg_over_batch': 0.020569266608468244,
+ 'epoch': 5,
+ 'test_acc': 0.9932,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9576989850427351,
+ 'train_acc_clean_only': 0.9928963572965354,
+ 'train_asr_bd_only': 0.6407815631262525,
+ 'train_epoch_loss_avg_over_batch': 0.15581154690370855,
+ 'train_ra_bd_only': 0.4574148296593186}
+2025-04-08:12:25:46 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:25:46 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:26:22 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.02057504653931 s
+2025-04-08:12:26:31 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 8.34695906056547e-05,
+ 'clean_test_loss_avg_over_batch': 0.021763191534842873,
+ 'epoch': 6,
+ 'test_acc': 0.9934,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9588675213675214,
+ 'train_acc_clean_only': 0.9937123249559492,
+ 'train_asr_bd_only': 0.6451828351978628,
+ 'train_epoch_loss_avg_over_batch': 0.15171966244840723,
+ 'train_ra_bd_only': 0.4524962431123727}
+2025-04-08:12:26:32 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:26:32 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:27:08 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.06829476356506 s
+2025-04-08:12:27:17 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 1.1786872577636452e-05,
+ 'clean_test_loss_avg_over_batch': 0.02080240926765719,
+ 'epoch': 7,
+ 'test_acc': 0.994,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9594684829059829,
+ 'train_acc_clean_only': 0.9939160112776376,
+ 'train_asr_bd_only': 0.6495327102803738,
+ 'train_epoch_loss_avg_over_batch': 0.15014707959360546,
+ 'train_ra_bd_only': 0.44876502002670227}
+2025-04-08:12:27:18 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:27:18 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:27:54 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.01084923744202 s
+2025-04-08:12:28:03 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 4.608859317351078e-06,
+ 'clean_test_loss_avg_over_batch': 0.0305498001943755,
+ 'epoch': 8,
+ 'test_acc': 0.9919,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9596354166666666,
+ 'train_acc_clean_only': 0.9944909202203632,
+ 'train_asr_bd_only': 0.646087101618555,
+ 'train_epoch_loss_avg_over_batch': 0.14981499835689607,
+ 'train_ra_bd_only': 0.45135991990655766}
+2025-04-08:12:28:04 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:28:04 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:28:39 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 35.90304231643677 s
+2025-04-08:12:28:49 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 6.18474889922933e-05,
+ 'clean_test_loss_avg_over_batch': 0.021607428059701016,
+ 'epoch': 9,
+ 'test_acc': 0.9932,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9596187232905983,
+ 'train_acc_clean_only': 0.9949921172215525,
+ 'train_asr_bd_only': 0.6411754883953915,
+ 'train_epoch_loss_avg_over_batch': 0.14650385628621548,
+ 'train_ra_bd_only': 0.45667056269828016}
+2025-04-08:12:28:49 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:28:49 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:29:25 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.031662940979004 s
+2025-04-08:12:29:34 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 6.80842065161363e-05,
+ 'clean_test_loss_avg_over_batch': 0.019032389760353378,
+ 'epoch': 10,
+ 'test_acc': 0.9942,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9606370192307693,
+ 'train_acc_clean_only': 0.995362469392298,
+ 'train_asr_bd_only': 0.6484322881921281,
+ 'train_epoch_loss_avg_over_batch': 0.14258268259815934,
+ 'train_ra_bd_only': 0.4508005336891261}
+2025-04-08:12:29:35 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:29:35 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:30:11 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.2351861000061 s
+2025-04-08:12:30:20 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 1.2339162963080142e-05,
+ 'clean_test_loss_avg_over_batch': 0.016264248659238926,
+ 'epoch': 11,
+ 'test_acc': 0.995,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.959518563034188,
+ 'train_acc_clean_only': 0.9951029493600445,
+ 'train_asr_bd_only': 0.6394728061394728,
+ 'train_epoch_loss_avg_over_batch': 0.14578816523122737,
+ 'train_ra_bd_only': 0.45912579245912577}
+2025-04-08:12:30:20 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:30:21 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:30:57 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.35550546646118 s
+2025-04-08:12:31:06 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 3.6060451825057535e-05,
+ 'clean_test_loss_avg_over_batch': 0.01882238577442727,
+ 'epoch': 12,
+ 'test_acc': 0.9947,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9610710470085471,
+ 'train_acc_clean_only': 0.9958821019828977,
+ 'train_asr_bd_only': 0.6479225763390623,
+ 'train_epoch_loss_avg_over_batch': 0.14198254793086368,
+ 'train_ra_bd_only': 0.4506924745536459}
+2025-04-08:12:31:07 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:31:07 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:31:43 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.15173077583313 s
+2025-04-08:12:31:52 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00023490782820170377,
+ 'clean_test_loss_avg_over_batch': 0.019796515331983778,
+ 'epoch': 13,
+ 'test_acc': 0.9939,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9613548344017094,
+ 'train_acc_clean_only': 0.9964758689765182,
+ 'train_asr_bd_only': 0.6452420701168614,
+ 'train_epoch_loss_avg_over_batch': 0.14008565277306953,
+ 'train_ra_bd_only': 0.4532554257095159}
+2025-04-08:12:31:53 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:31:53 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:32:29 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.62093806266785 s
+2025-04-08:12:32:38 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 3.9804992546021205e-06,
+ 'clean_test_loss_avg_over_batch': 0.018574050930476028,
+ 'epoch': 14,
+ 'test_acc': 0.9949,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9605869391025641,
+ 'train_acc_clean_only': 0.9963273482712569,
+ 'train_asr_bd_only': 0.639018691588785,
+ 'train_epoch_loss_avg_over_batch': 0.14138747569428295,
+ 'train_ra_bd_only': 0.45861148197596796}
+2025-04-08:12:32:39 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:32:39 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:33:16 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 37.438682317733765 s
+2025-04-08:12:33:26 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 5.67639344552217e-05,
+ 'clean_test_loss_avg_over_batch': 0.027046287280530965,
+ 'epoch': 15,
+ 'test_acc': 0.9924,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9615718482905983,
+ 'train_acc_clean_only': 0.9960861419747361,
+ 'train_asr_bd_only': 0.651092941765393,
+ 'train_epoch_loss_avg_over_batch': 0.13883554303429574,
+ 'train_ra_bd_only': 0.4476889704655431}
+2025-04-08:12:33:26 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:33:26 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:33:56 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 29.8131000995636 s
+2025-04-08:12:34:04 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 4.40042507671704e-07,
+ 'clean_test_loss_avg_over_batch': 0.017331345852124033,
+ 'epoch': 16,
+ 'test_acc': 0.9949,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9614216079059829,
+ 'train_acc_clean_only': 0.996067811700115,
+ 'train_asr_bd_only': 0.6495826377295493,
+ 'train_epoch_loss_avg_over_batch': 0.1393583821108899,
+ 'train_ra_bd_only': 0.44841402337228714}
+2025-04-08:12:34:04 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:34:05 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:34:35 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 30.552921533584595 s
+2025-04-08:12:34:44 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 5.895594154666674e-06,
+ 'clean_test_loss_avg_over_batch': 0.04125269410742706,
+ 'epoch': 17,
+ 'test_acc': 0.9881,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9618723290598291,
+ 'train_acc_clean_only': 0.9969948801662091,
+ 'train_asr_bd_only': 0.6460973982655104,
+ 'train_epoch_loss_avg_over_batch': 0.1383809095694341,
+ 'train_ra_bd_only': 0.4523015343562375}
+2025-04-08:12:34:45 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:34:45 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:35:22 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 37.478378772735596 s
+2025-04-08:12:35:31 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00013773270989653433,
+ 'clean_test_loss_avg_over_batch': 0.017486963684146022,
+ 'epoch': 18,
+ 'test_acc': 0.9949,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9614383012820513,
+ 'train_acc_clean_only': 0.9967725181777711,
+ 'train_asr_bd_only': 0.6435246995994659,
+ 'train_epoch_loss_avg_over_batch': 0.13867894877703527,
+ 'train_ra_bd_only': 0.45477303070761016}
+2025-04-08:12:35:32 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:35:32 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:36:09 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 37.37714719772339 s
+2025-04-08:12:36:18 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 1.222442504410832e-05,
+ 'clean_test_loss_avg_over_batch': 0.02050839083695112,
+ 'epoch': 19,
+ 'test_acc': 0.994,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9618723290598291,
+ 'train_acc_clean_only': 0.9966241282089331,
+ 'train_asr_bd_only': 0.6491989319092123,
+ 'train_epoch_loss_avg_over_batch': 0.13737060625153857,
+ 'train_ra_bd_only': 0.44959946595460615}
+2025-04-08:12:36:18 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:36:19 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:36:56 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 37.974690437316895 s
+2025-04-08:12:37:06 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 2.840873363106446e-06,
+ 'clean_test_loss_avg_over_batch': 0.020247935615126278,
+ 'epoch': 20,
+ 'test_acc': 0.9941,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9613548344017094,
+ 'train_acc_clean_only': 0.9965682910089224,
+ 'train_asr_bd_only': 0.6447039199332777,
+ 'train_epoch_loss_avg_over_batch': 0.13749190169171646,
+ 'train_ra_bd_only': 0.45387823185988324}
+2025-04-08:12:37:06 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:37:06 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:37:45 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 38.59603834152222 s
+2025-04-08:12:37:54 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 3.2724441661883527e-06,
+ 'clean_test_loss_avg_over_batch': 0.01912406211202416,
+ 'epoch': 21,
+ 'test_acc': 0.9948,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9607872596153846,
+ 'train_acc_clean_only': 0.9971064492793946,
+ 'train_asr_bd_only': 0.6339509263895844,
+ 'train_epoch_loss_avg_over_batch': 0.13829181037652186,
+ 'train_ra_bd_only': 0.4636955433149725}
+2025-04-08:12:37:54 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:37:54 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:38:31 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.6605327129364 s
+2025-04-08:12:38:40 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 7.850655036774287e-05,
+ 'clean_test_loss_avg_over_batch': 0.016387327177791938,
+ 'epoch': 22,
+ 'test_acc': 0.995,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9613715277777778,
+ 'train_acc_clean_only': 0.9973662246128164,
+ 'train_asr_bd_only': 0.6373351143763567,
+ 'train_epoch_loss_avg_over_batch': 0.13662220916957554,
+ 'train_ra_bd_only': 0.461011855067624}
+2025-04-08:12:38:40 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:38:41 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:39:17 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.593026876449585 s
+2025-04-08:12:39:26 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 1.5753458439934882e-05,
+ 'clean_test_loss_avg_over_batch': 0.01676394034632411,
+ 'epoch': 23,
+ 'test_acc': 0.9952,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9618389423076923,
+ 'train_acc_clean_only': 0.9976071673684406,
+ 'train_asr_bd_only': 0.6400800934423494,
+ 'train_epoch_loss_avg_over_batch': 0.1359425009124809,
+ 'train_ra_bd_only': 0.45903554146504255}
+2025-04-08:12:39:26 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:39:26 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:40:03 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.480640172958374 s
+2025-04-08:12:40:12 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0001040937115992075,
+ 'clean_test_loss_avg_over_batch': 0.024118102755754173,
+ 'epoch': 24,
+ 'test_acc': 0.9938,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9633079594017094,
+ 'train_acc_clean_only': 0.9977183772653917,
+ 'train_asr_bd_only': 0.6538782318598833,
+ 'train_epoch_loss_avg_over_batch': 0.13064903950987336,
+ 'train_ra_bd_only': 0.44470391993327774}
+2025-04-08:12:40:12 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:40:13 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:40:49 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.560134410858154 s
+2025-04-08:12:40:58 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 5.3128020687874825e-05,
+ 'clean_test_loss_avg_over_batch': 0.02112918924370816,
+ 'epoch': 25,
+ 'test_acc': 0.9946,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9620559561965812,
+ 'train_acc_clean_only': 0.9972548364958359,
+ 'train_asr_bd_only': 0.6453012852612252,
+ 'train_epoch_loss_avg_over_batch': 0.13459240045780554,
+ 'train_ra_bd_only': 0.4525121014855617}
+2025-04-08:12:40:58 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:40:59 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:41:35 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.84193682670593 s
+2025-04-08:12:41:44 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 3.124452476339697e-05,
+ 'clean_test_loss_avg_over_batch': 0.01689619171824395,
+ 'epoch': 26,
+ 'test_acc': 0.9953,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9625734508547008,
+ 'train_acc_clean_only': 0.9970508587750863,
+ 'train_asr_bd_only': 0.652253756260434,
+ 'train_epoch_loss_avg_over_batch': 0.1324277735259543,
+ 'train_ra_bd_only': 0.44691151919866445}
+2025-04-08:12:41:45 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:41:45 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:42:22 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 37.82712912559509 s
+2025-04-08:12:42:31 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 8.315359712430788e-05,
+ 'clean_test_loss_avg_over_batch': 0.02019277998044368,
+ 'epoch': 27,
+ 'test_acc': 0.9943,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9614216079059829,
+ 'train_acc_clean_only': 0.9975330625266633,
+ 'train_asr_bd_only': 0.6364546820230346,
+ 'train_epoch_loss_avg_over_batch': 0.13540811160913643,
+ 'train_ra_bd_only': 0.46202637289267234}
+2025-04-08:12:42:32 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:42:32 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:43:08 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.67621922492981 s
+2025-04-08:12:43:18 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0001128112889744725,
+ 'clean_test_loss_avg_over_batch': 0.021950171274557426,
+ 'epoch': 28,
+ 'test_acc': 0.9939,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9626569177350427,
+ 'train_acc_clean_only': 0.9975886630063807,
+ 'train_asr_bd_only': 0.6483644859813084,
+ 'train_epoch_loss_avg_over_batch': 0.13207726151101354,
+ 'train_ra_bd_only': 0.4506008010680908}
+2025-04-08:12:43:18 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:43:18 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:43:55 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.74624061584473 s
+2025-04-08:12:44:04 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 2.8557583455424296e-05,
+ 'clean_test_loss_avg_over_batch': 0.013882258822227817,
+ 'epoch': 29,
+ 'test_acc': 0.9958,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9624732905982906,
+ 'train_acc_clean_only': 0.9973660291962679,
+ 'train_asr_bd_only': 0.648590021691974,
+ 'train_epoch_loss_avg_over_batch': 0.13181903624795696,
+ 'train_ra_bd_only': 0.4495244451860504}
+2025-04-08:12:44:04 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:44:05 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:44:41 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.29762244224548 s
+2025-04-08:12:44:49 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 7.980788133966304e-05,
+ 'clean_test_loss_avg_over_batch': 0.020141860955362384,
+ 'epoch': 30,
+ 'test_acc': 0.9943,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9623063568376068,
+ 'train_acc_clean_only': 0.9978483853616011,
+ 'train_asr_bd_only': 0.642463695543315,
+ 'train_epoch_loss_avg_over_batch': 0.13278173091701972,
+ 'train_ra_bd_only': 0.45618427641462195}
+2025-04-08:12:44:50 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:44:50 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:45:21 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 30.907864332199097 s
+2025-04-08:12:45:29 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 6.487392077578476e-05,
+ 'clean_test_loss_avg_over_batch': 0.021710784167318038,
+ 'epoch': 31,
+ 'test_acc': 0.9936,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9624232104700855,
+ 'train_acc_clean_only': 0.9971992432392328,
+ 'train_asr_bd_only': 0.6494156928213689,
+ 'train_epoch_loss_avg_over_batch': 0.13112988768734485,
+ 'train_ra_bd_only': 0.44908180300500833}
+2025-04-08:12:45:29 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:45:29 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:45:57 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 28.36435866355896 s
+2025-04-08:12:46:07 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 3.871184416196447e-05,
+ 'clean_test_loss_avg_over_batch': 0.019206285006234045,
+ 'epoch': 32,
+ 'test_acc': 0.9936,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9625233707264957,
+ 'train_acc_clean_only': 0.9976815787521329,
+ 'train_asr_bd_only': 0.6459585838343354,
+ 'train_epoch_loss_avg_over_batch': 0.1301856434577678,
+ 'train_ra_bd_only': 0.4530728122912492}
+2025-04-08:12:46:07 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:46:07 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:46:44 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.42154264450073 s
+2025-04-08:12:46:53 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 6.463958054385804e-06,
+ 'clean_test_loss_avg_over_batch': 0.017929412592003487,
+ 'epoch': 33,
+ 'test_acc': 0.995,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9622896634615384,
+ 'train_acc_clean_only': 0.9976815357507187,
+ 'train_asr_bd_only': 0.643680080146936,
+ 'train_epoch_loss_avg_over_batch': 0.13069002320751166,
+ 'train_ra_bd_only': 0.4548338620804809}
+2025-04-08:12:46:53 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:46:54 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:47:30 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.41855716705322 s
+2025-04-08:12:47:39 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00017179919691251354,
+ 'clean_test_loss_avg_over_batch': 0.015366152848987957,
+ 'epoch': 34,
+ 'test_acc': 0.9956,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.962356436965812,
+ 'train_acc_clean_only': 0.9979597136179842,
+ 'train_asr_bd_only': 0.6419031719532554,
+ 'train_epoch_loss_avg_over_batch': 0.13067189425739467,
+ 'train_ra_bd_only': 0.45609348914858094}
+2025-04-08:12:47:39 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:47:39 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:48:15 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.26297569274902 s
+2025-04-08:12:48:24 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.000124347318721358,
+ 'clean_test_loss_avg_over_batch': 0.01818662285609495,
+ 'epoch': 35,
+ 'test_acc': 0.995,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9622395833333334,
+ 'train_acc_clean_only': 0.9983119388587964,
+ 'train_asr_bd_only': 0.6379252835223482,
+ 'train_epoch_loss_avg_over_batch': 0.13088740958060083,
+ 'train_ra_bd_only': 0.4603068712474983}
+2025-04-08:12:48:24 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:48:25 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:49:01 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.30188822746277 s
+2025-04-08:12:49:09 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 1.3170986695628708e-05,
+ 'clean_test_loss_avg_over_batch': 0.023533255630872756,
+ 'epoch': 36,
+ 'test_acc': 0.994,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9631911057692307,
+ 'train_acc_clean_only': 0.9980337964422845,
+ 'train_asr_bd_only': 0.6497580510595695,
+ 'train_epoch_loss_avg_over_batch': 0.1292450169626719,
+ 'train_ra_bd_only': 0.4493575838478225}
+2025-04-08:12:49:09 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:49:10 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:49:46 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.423895597457886 s
+2025-04-08:12:49:55 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 6.834084645010413e-05,
+ 'clean_test_loss_avg_over_batch': 0.013013541894814566,
+ 'epoch': 37,
+ 'test_acc': 0.9961,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9641760149572649,
+ 'train_acc_clean_only': 0.9984975794335318,
+ 'train_asr_bd_only': 0.6553163077950259,
+ 'train_epoch_loss_avg_over_batch': 0.12522589527548122,
+ 'train_ra_bd_only': 0.442663995993991}
+2025-04-08:12:49:55 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:49:55 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:50:31 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 35.85430097579956 s
+2025-04-08:12:50:39 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0001275130654365467,
+ 'clean_test_loss_avg_over_batch': 0.01739048788451466,
+ 'epoch': 38,
+ 'test_acc': 0.9954,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9642427884615384,
+ 'train_acc_clean_only': 0.9990539964014765,
+ 'train_asr_bd_only': 0.651092941765393,
+ 'train_epoch_loss_avg_over_batch': 0.12529566411215526,
+ 'train_ra_bd_only': 0.448022693141999}
+2025-04-08:12:50:40 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:50:40 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:51:17 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 37.74534249305725 s
+2025-04-08:12:51:26 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 4.722720543316133e-05,
+ 'clean_test_loss_avg_over_batch': 0.032753753953295044,
+ 'epoch': 39,
+ 'test_acc': 0.9909,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9622896634615384,
+ 'train_acc_clean_only': 0.9980894082730477,
+ 'train_asr_bd_only': 0.640306973640307,
+ 'train_epoch_loss_avg_over_batch': 0.13100073424080372,
+ 'train_ra_bd_only': 0.45895895895895894}
+2025-04-08:12:51:27 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:51:27 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:52:02 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 35.80366802215576 s
+2025-04-08:12:52:10 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00019128688670117671,
+ 'clean_test_loss_avg_over_batch': 0.018169657640377226,
+ 'epoch': 40,
+ 'test_acc': 0.9954,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9630408653846154,
+ 'train_acc_clean_only': 0.9983121267203324,
+ 'train_asr_bd_only': 0.645575959933222,
+ 'train_epoch_loss_avg_over_batch': 0.12916703661505738,
+ 'train_ra_bd_only': 0.4532554257095159}
+2025-04-08:12:52:11 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:52:11 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:52:47 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.027445554733276 s
+2025-04-08:12:52:55 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 6.905107485937139e-05,
+ 'clean_test_loss_avg_over_batch': 0.020344597761426417,
+ 'epoch': 41,
+ 'test_acc': 0.994,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9637920673076923,
+ 'train_acc_clean_only': 0.9986275455321043,
+ 'train_asr_bd_only': 0.6500167056465085,
+ 'train_epoch_loss_avg_over_batch': 0.12574409017275667,
+ 'train_ra_bd_only': 0.44904777814901436}
+2025-04-08:12:52:56 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:52:56 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:53:32 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.58347272872925 s
+2025-04-08:12:53:41 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 5.9900441146324534e-05,
+ 'clean_test_loss_avg_over_batch': 0.016105390445600394,
+ 'epoch': 42,
+ 'test_acc': 0.996,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.964042467948718,
+ 'train_acc_clean_only': 0.9986645150520282,
+ 'train_asr_bd_only': 0.6524787180771157,
+ 'train_epoch_loss_avg_over_batch': 0.1250610154392755,
+ 'train_ra_bd_only': 0.44650308796528126}
+2025-04-08:12:53:41 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:53:42 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:54:18 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.430535554885864 s
+2025-04-08:12:54:27 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 8.596773421257393e-05,
+ 'clean_test_loss_avg_over_batch': 0.02325145924711435,
+ 'epoch': 43,
+ 'test_acc': 0.9936,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9646601228632479,
+ 'train_acc_clean_only': 0.9988686314149526,
+ 'train_asr_bd_only': 0.6565892767663271,
+ 'train_epoch_loss_avg_over_batch': 0.12368326772673008,
+ 'train_ra_bd_only': 0.4416235176215133}
+2025-04-08:12:54:27 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:54:28 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:55:04 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.74978542327881 s
+2025-04-08:12:55:13 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 6.992916663055977e-05,
+ 'clean_test_loss_avg_over_batch': 0.01760896310745149,
+ 'epoch': 44,
+ 'test_acc': 0.995,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9628739316239316,
+ 'train_acc_clean_only': 0.9989982933887364,
+ 'train_asr_bd_only': 0.6380920613742495,
+ 'train_epoch_loss_avg_over_batch': 0.1276956367163131,
+ 'train_ra_bd_only': 0.4599733155436958}
+2025-04-08:12:55:14 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:55:14 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:55:50 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 35.8034291267395 s
+2025-04-08:12:55:59 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00021268006503946004,
+ 'clean_test_loss_avg_over_batch': 0.01692611675251193,
+ 'epoch': 45,
+ 'test_acc': 0.9955,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9637419871794872,
+ 'train_acc_clean_only': 0.9989241128568513,
+ 'train_asr_bd_only': 0.647372810675563,
+ 'train_epoch_loss_avg_over_batch': 0.12551240509964973,
+ 'train_ra_bd_only': 0.45087572977481233}
+2025-04-08:12:55:59 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:55:59 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:56:35 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 36.234283447265625 s
+2025-04-08:12:56:42 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.000194382639831378,
+ 'clean_test_loss_avg_over_batch': 0.01849554446721125,
+ 'epoch': 46,
+ 'test_acc': 0.9955,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9629573985042735,
+ 'train_acc_clean_only': 0.9988313639652007,
+ 'train_asr_bd_only': 0.6403669724770642,
+ 'train_epoch_loss_avg_over_batch': 0.12691104509589127,
+ 'train_ra_bd_only': 0.4588824020016681}
+2025-04-08:12:56:42 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:56:42 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:56:56 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 13.479650974273682 s
+2025-04-08:12:57:00 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 7.861166696003097e-06,
+ 'clean_test_loss_avg_over_batch': 0.02110527827691057,
+ 'epoch': 47,
+ 'test_acc': 0.9941,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9634581997863247,
+ 'train_acc_clean_only': 0.9987016118561386,
+ 'train_asr_bd_only': 0.6463027875146052,
+ 'train_epoch_loss_avg_over_batch': 0.1260536615537782,
+ 'train_ra_bd_only': 0.45351360373894173}
+2025-04-08:12:57:01 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:57:01 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:57:20 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 19.503601551055908 s
+2025-04-08:12:57:26 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 3.381010279093023e-05,
+ 'clean_test_loss_avg_over_batch': 0.021339808489030956,
+ 'epoch': 48,
+ 'test_acc': 0.9943,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9643429487179487,
+ 'train_acc_clean_only': 0.9990911788708361,
+ 'train_asr_bd_only': 0.6514696058784235,
+ 'train_epoch_loss_avg_over_batch': 0.12194323368593414,
+ 'train_ra_bd_only': 0.44789579158316634}
+2025-04-08:12:57:27 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:57:27 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:57:49 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.76379418373108 s
+2025-04-08:12:57:55 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 3.8054077123606606e-05,
+ 'clean_test_loss_avg_over_batch': 0.017795487992978313,
+ 'epoch': 49,
+ 'test_acc': 0.996,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9638588408119658,
+ 'train_acc_clean_only': 0.9984603398382429,
+ 'train_asr_bd_only': 0.6527685123415611,
+ 'train_epoch_loss_avg_over_batch': 0.1238957978785038,
+ 'train_ra_bd_only': 0.4464643095396931}
+2025-04-08:12:57:56 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:57:56 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:58:18 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 22.30632758140564 s
+2025-04-08:12:58:24 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 3.498131386742232e-05,
+ 'clean_test_loss_avg_over_batch': 0.01841659444186076,
+ 'epoch': 50,
+ 'test_acc': 0.9953,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.963691907051282,
+ 'train_acc_clean_only': 0.9989241926808006,
+ 'train_asr_bd_only': 0.6466366215990653,
+ 'train_epoch_loss_avg_over_batch': 0.12417059258804616,
+ 'train_ra_bd_only': 0.45234518444333166}
+2025-04-08:12:58:25 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:58:25 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:58:47 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 22.297744750976562 s
+2025-04-08:12:58:53 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 3.2305138811865055e-05,
+ 'clean_test_loss_avg_over_batch': 0.018066316139567468,
+ 'epoch': 51,
+ 'test_acc': 0.9958,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.963691907051282,
+ 'train_acc_clean_only': 0.9991467576791809,
+ 'train_asr_bd_only': 0.6446929238985314,
+ 'train_epoch_loss_avg_over_batch': 0.12465931680531074,
+ 'train_ra_bd_only': 0.45410547396528705}
+2025-04-08:12:58:54 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:58:54 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:59:16 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 22.392052173614502 s
+2025-04-08:12:59:22 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 6.152919402819874e-05,
+ 'clean_test_loss_avg_over_batch': 0.018508716145253304,
+ 'epoch': 52,
+ 'test_acc': 0.9949,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9649772970085471,
+ 'train_acc_clean_only': 0.9991096767013522,
+ 'train_asr_bd_only': 0.6578200634284761,
+ 'train_epoch_loss_avg_over_batch': 0.120735818400788,
+ 'train_ra_bd_only': 0.44216324486730096}
+2025-04-08:12:59:22 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:59:22 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:59:43 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.779993534088135 s
+2025-04-08:12:59:49 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 5.2990125253235815e-05,
+ 'clean_test_loss_avg_over_batch': 0.016091677240505697,
+ 'epoch': 53,
+ 'test_acc': 0.9959,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9650774572649573,
+ 'train_acc_clean_only': 0.9993694245071311,
+ 'train_asr_bd_only': 0.656140350877193,
+ 'train_epoch_loss_avg_over_batch': 0.12057431727950262,
+ 'train_ra_bd_only': 0.4427736006683375}
+2025-04-08:12:59:50 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:12:59:50 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:00:12 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 22.535470485687256 s
+2025-04-08:13:00:19 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 6.201001856489186e-05,
+ 'clean_test_loss_avg_over_batch': 0.01682515337523898,
+ 'epoch': 54,
+ 'test_acc': 0.9957,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9652777777777778,
+ 'train_acc_clean_only': 0.9993322327539834,
+ 'train_asr_bd_only': 0.6589354246621058,
+ 'train_epoch_loss_avg_over_batch': 0.1201628819744811,
+ 'train_ra_bd_only': 0.4398464875688303}
+2025-04-08:13:00:20 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:00:20 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:00:45 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 25.30957841873169 s
+2025-04-08:13:00:52 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 9.556914526808508e-05,
+ 'clean_test_loss_avg_over_batch': 0.017359184174904528,
+ 'epoch': 55,
+ 'test_acc': 0.9959,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9645599626068376,
+ 'train_acc_clean_only': 0.999406484160546,
+ 'train_asr_bd_only': 0.6508016032064128,
+ 'train_epoch_loss_avg_over_batch': 0.12154907735191986,
+ 'train_ra_bd_only': 0.4482297929191717}
+2025-04-08:13:00:53 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:00:53 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:01:18 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 25.154287576675415 s
+2025-04-08:13:01:25 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0001400285661769834,
+ 'clean_test_loss_avg_over_batch': 0.016744328014916574,
+ 'epoch': 56,
+ 'test_acc': 0.9955,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9643596420940171,
+ 'train_acc_clean_only': 0.999629045720115,
+ 'train_asr_bd_only': 0.6468525630322257,
+ 'train_epoch_loss_avg_over_batch': 0.12110212800276075,
+ 'train_ra_bd_only': 0.45166137919519117}
+2025-04-08:13:01:25 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:01:25 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:01:47 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.545799732208252 s
+2025-04-08:13:01:53 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0001802473972776157,
+ 'clean_test_loss_avg_over_batch': 0.019347625950725655,
+ 'epoch': 57,
+ 'test_acc': 0.9947,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9639256143162394,
+ 'train_acc_clean_only': 0.9992023891228136,
+ 'train_asr_bd_only': 0.6465876856332388,
+ 'train_epoch_loss_avg_over_batch': 0.12214101841434455,
+ 'train_ra_bd_only': 0.45302853328883697}
+2025-04-08:13:01:53 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:01:54 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:02:14 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.523783683776855 s
+2025-04-08:13:02:20 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.001826333399357038,
+ 'clean_test_loss_avg_over_batch': 0.018368862734929235,
+ 'epoch': 58,
+ 'test_acc': 0.995,
+ 'test_asr': 0.9998891352549889,
+ 'test_ra': 0.00011086474501108647,
+ 'train_acc': 0.9635917467948718,
+ 'train_acc_clean_only': 0.9990910945818108,
+ 'train_asr_bd_only': 0.6442516268980477,
+ 'train_epoch_loss_avg_over_batch': 0.12311627334540981,
+ 'train_ra_bd_only': 0.45503086934757214}
+2025-04-08:13:02:21 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:02:21 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:02:42 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.418601512908936 s
+2025-04-08:13:02:49 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00014033404930698042,
+ 'clean_test_loss_avg_over_batch': 0.018697872259646735,
+ 'epoch': 59,
+ 'test_acc': 0.9954,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9640090811965812,
+ 'train_acc_clean_only': 0.9992950953476293,
+ 'train_asr_bd_only': 0.6467645096731154,
+ 'train_epoch_loss_avg_over_batch': 0.12223654763741243,
+ 'train_ra_bd_only': 0.45246831220813877}
+2025-04-08:13:02:49 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:02:50 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:03:12 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 22.267750024795532 s
+2025-04-08:13:03:18 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00018992943526901514,
+ 'clean_test_loss_avg_over_batch': 0.016720087761855153,
+ 'epoch': 60,
+ 'test_acc': 0.9962,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9652276976495726,
+ 'train_acc_clean_only': 0.9993507457149218,
+ 'train_asr_bd_only': 0.6584389593062041,
+ 'train_epoch_loss_avg_over_batch': 0.11902411091818005,
+ 'train_ra_bd_only': 0.440126751167445}
+2025-04-08:13:03:18 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:03:18 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:03:40 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.827581882476807 s
+2025-04-08:13:03:45 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0003729244003615106,
+ 'clean_test_loss_avg_over_batch': 0.017264539668781543,
+ 'epoch': 61,
+ 'test_acc': 0.9959,
+ 'test_asr': 0.9998891352549889,
+ 'test_ra': 0.00011086474501108647,
+ 'train_acc': 0.9644431089743589,
+ 'train_acc_clean_only': 0.9995362641439436,
+ 'train_asr_bd_only': 0.6488154821488155,
+ 'train_epoch_loss_avg_over_batch': 0.12068026283214617,
+ 'train_ra_bd_only': 0.4506172839506173}
+2025-04-08:13:03:46 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:03:46 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:04:07 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.250011205673218 s
+2025-04-08:13:04:13 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00010011606150008344,
+ 'clean_test_loss_avg_over_batch': 0.02171112948592422,
+ 'epoch': 62,
+ 'test_acc': 0.9945,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9647268963675214,
+ 'train_acc_clean_only': 0.9994806832724372,
+ 'train_asr_bd_only': 0.6517454484716887,
+ 'train_epoch_loss_avg_over_batch': 0.119322366013518,
+ 'train_ra_bd_only': 0.44646734591615167}
+2025-04-08:13:04:14 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:04:14 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:04:36 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.724137783050537 s
+2025-04-08:13:04:42 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0001981510667205775,
+ 'clean_test_loss_avg_over_batch': 0.01611446366605608,
+ 'epoch': 63,
+ 'test_acc': 0.9956,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9641092414529915,
+ 'train_acc_clean_only': 0.9993694011165309,
+ 'train_asr_bd_only': 0.6465675630532821,
+ 'train_epoch_loss_avg_over_batch': 0.12079110993151991,
+ 'train_ra_bd_only': 0.45331551695339906}
+2025-04-08:13:04:42 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:04:42 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:05:03 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.748003244400024 s
+2025-04-08:13:05:09 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00033249648293631127,
+ 'clean_test_loss_avg_over_batch': 0.0203413420019353,
+ 'epoch': 64,
+ 'test_acc': 0.9946,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.965377938034188,
+ 'train_acc_clean_only': 0.9994806736404778,
+ 'train_asr_bd_only': 0.6583166332665331,
+ 'train_epoch_loss_avg_over_batch': 0.11761518685608847,
+ 'train_ra_bd_only': 0.4407147628590514}
+2025-04-08:13:05:10 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:05:10 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:05:32 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 22.03077793121338 s
+2025-04-08:13:05:38 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0004328507561118565,
+ 'clean_test_loss_avg_over_batch': 0.018469158009643653,
+ 'epoch': 65,
+ 'test_acc': 0.9952,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9640925480769231,
+ 'train_acc_clean_only': 0.9994806543754868,
+ 'train_asr_bd_only': 0.645575959933222,
+ 'train_epoch_loss_avg_over_batch': 0.11999118375058612,
+ 'train_ra_bd_only': 0.45442404006677795}
+2025-04-08:13:05:38 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:05:38 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:05:59 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.629703521728516 s
+2025-04-08:13:06:05 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00022690636528045936,
+ 'clean_test_loss_avg_over_batch': 0.01712929990726134,
+ 'epoch': 66,
+ 'test_acc': 0.9961,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9643930288461539,
+ 'train_acc_clean_only': 0.9994064401246475,
+ 'train_asr_bd_only': 0.649365821094793,
+ 'train_epoch_loss_avg_over_batch': 0.11857396961213687,
+ 'train_ra_bd_only': 0.44876502002670227}
+2025-04-08:13:06:06 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:06:06 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:06:31 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 25.55920958518982 s
+2025-04-08:13:06:38 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0001947765316876491,
+ 'clean_test_loss_avg_over_batch': 0.01933059986729375,
+ 'epoch': 67,
+ 'test_acc': 0.9952,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9650941506410257,
+ 'train_acc_clean_only': 0.999276679402055,
+ 'train_asr_bd_only': 0.657200133645172,
+ 'train_epoch_loss_avg_over_batch': 0.11695246486009186,
+ 'train_ra_bd_only': 0.44219846308052124}
+2025-04-08:13:06:39 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:06:39 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:07:00 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.329169273376465 s
+2025-04-08:13:07:07 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0002075203545399758,
+ 'clean_test_loss_avg_over_batch': 0.019442276164146635,
+ 'epoch': 68,
+ 'test_acc': 0.9954,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9650774572649573,
+ 'train_acc_clean_only': 0.9996475868976518,
+ 'train_asr_bd_only': 0.653923205342237,
+ 'train_epoch_loss_avg_over_batch': 0.11759176937879151,
+ 'train_ra_bd_only': 0.44407345575959933}
+2025-04-08:13:07:07 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:07:08 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:07:29 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 22.047986030578613 s
+2025-04-08:13:07:36 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00012357379885760962,
+ 'clean_test_loss_avg_over_batch': 0.019950757508278127,
+ 'epoch': 69,
+ 'test_acc': 0.9948,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9654113247863247,
+ 'train_acc_clean_only': 0.9995733630124282,
+ 'train_asr_bd_only': 0.6581581581581581,
+ 'train_epoch_loss_avg_over_batch': 0.11564067044717252,
+ 'train_ra_bd_only': 0.44044044044044045}
+2025-04-08:13:07:36 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:07:36 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:07:57 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.61058259010315 s
+2025-04-08:13:08:01 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00020529167594643912,
+ 'clean_test_loss_avg_over_batch': 0.021720055511362756,
+ 'epoch': 70,
+ 'test_acc': 0.9944,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9663294604700855,
+ 'train_acc_clean_only': 0.9995177326012762,
+ 'train_asr_bd_only': 0.6677236315086782,
+ 'train_epoch_loss_avg_over_batch': 0.11398663171208821,
+ 'train_ra_bd_only': 0.4317423230974633}
+2025-04-08:13:08:02 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:08:02 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:08:16 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 13.960803747177124 s
+2025-04-08:13:08:20 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 4.2277123675760356e-05,
+ 'clean_test_loss_avg_over_batch': 0.019961316186029913,
+ 'epoch': 71,
+ 'test_acc': 0.9946,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.965110844017094,
+ 'train_acc_clean_only': 0.9996475803609519,
+ 'train_asr_bd_only': 0.6543148055416458,
+ 'train_epoch_loss_avg_over_batch': 0.11636874610239752,
+ 'train_ra_bd_only': 0.44500083458521117}
+2025-04-08:13:08:20 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:08:21 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:08:32 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 11.983854293823242 s
+2025-04-08:13:08:37 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0001837047699078078,
+ 'clean_test_loss_avg_over_batch': 0.021617227360308525,
+ 'epoch': 72,
+ 'test_acc': 0.995,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9644097222222222,
+ 'train_acc_clean_only': 0.9994806543754868,
+ 'train_asr_bd_only': 0.6487479131886478,
+ 'train_epoch_loss_avg_over_batch': 0.11846276825198378,
+ 'train_ra_bd_only': 0.45125208681135226}
+2025-04-08:13:08:38 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:08:38 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:09:00 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.74800682067871 s
+2025-04-08:13:09:05 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00023823039844782996,
+ 'clean_test_loss_avg_over_batch': 0.020627295143778517,
+ 'epoch': 73,
+ 'test_acc': 0.9951,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9652944711538461,
+ 'train_acc_clean_only': 0.9995363243503904,
+ 'train_asr_bd_only': 0.6569233338900952,
+ 'train_epoch_loss_avg_over_batch': 0.11485978502493638,
+ 'train_ra_bd_only': 0.4424586604309337}
+2025-04-08:13:09:06 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:09:06 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:09:26 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.624662399291992 s
+2025-04-08:13:09:33 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00019024148602678087,
+ 'clean_test_loss_avg_over_batch': 0.020125297468842326,
+ 'epoch': 74,
+ 'test_acc': 0.9953,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9659121260683761,
+ 'train_acc_clean_only': 0.9993508300102012,
+ 'train_asr_bd_only': 0.6648856236433461,
+ 'train_epoch_loss_avg_over_batch': 0.11358229630491418,
+ 'train_ra_bd_only': 0.4336283185840708}
+2025-04-08:13:09:33 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:09:33 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:09:55 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.900392770767212 s
+2025-04-08:13:10:01 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00040675927089645303,
+ 'clean_test_loss_avg_over_batch': 0.019859844000488402,
+ 'epoch': 75,
+ 'test_acc': 0.9957,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9657284989316239,
+ 'train_acc_clean_only': 0.9997032310717068,
+ 'train_asr_bd_only': 0.6599332220367279,
+ 'train_epoch_loss_avg_over_batch': 0.11348315957997344,
+ 'train_ra_bd_only': 0.4393989983305509}
+2025-04-08:13:10:02 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:10:02 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:10:22 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.54697847366333 s
+2025-04-08:13:10:29 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0002527666263016675,
+ 'clean_test_loss_avg_over_batch': 0.022381570192217485,
+ 'epoch': 76,
+ 'test_acc': 0.9953,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9656617254273504,
+ 'train_acc_clean_only': 0.999666153532281,
+ 'train_asr_bd_only': 0.6594287623183565,
+ 'train_epoch_loss_avg_over_batch': 0.11419001849702536,
+ 'train_ra_bd_only': 0.4397862034407884}
+2025-04-08:13:10:29 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:10:29 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:10:51 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.45399284362793 s
+2025-04-08:13:10:56 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00032131830013101316,
+ 'clean_test_loss_avg_over_batch': 0.02062604342008163,
+ 'epoch': 77,
+ 'test_acc': 0.9954,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9652276976495726,
+ 'train_acc_clean_only': 0.9997774109179944,
+ 'train_asr_bd_only': 0.6544301685299516,
+ 'train_epoch_loss_avg_over_batch': 0.11468079355823943,
+ 'train_ra_bd_only': 0.44468546637744033}
+2025-04-08:13:10:57 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:10:57 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:11:17 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.42215871810913 s
+2025-04-08:13:11:24 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00020242055489035638,
+ 'clean_test_loss_avg_over_batch': 0.02493030753884099,
+ 'epoch': 78,
+ 'test_acc': 0.9945,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9663962339743589,
+ 'train_acc_clean_only': 0.9996475738240095,
+ 'train_asr_bd_only': 0.6672229639519359,
+ 'train_epoch_loss_avg_over_batch': 0.11230584292107412,
+ 'train_ra_bd_only': 0.4317423230974633}
+2025-04-08:13:11:24 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:11:25 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:11:46 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.68279528617859 s
+2025-04-08:13:11:51 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 9.35376755107017e-05,
+ 'clean_test_loss_avg_over_batch': 0.02222491063795029,
+ 'epoch': 79,
+ 'test_acc': 0.9949,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9666633279914529,
+ 'train_acc_clean_only': 0.9996476065062967,
+ 'train_asr_bd_only': 0.6696175045932855,
+ 'train_epoch_loss_avg_over_batch': 0.11022295287022224,
+ 'train_ra_bd_only': 0.4292634040420912}
+2025-04-08:13:11:52 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:11:52 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:12:12 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.510977268218994 s
+2025-04-08:13:12:18 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00028917505746071134,
+ 'clean_test_loss_avg_over_batch': 0.019850706856232136,
+ 'epoch': 80,
+ 'test_acc': 0.995,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9657618856837606,
+ 'train_acc_clean_only': 0.9996290181966575,
+ 'train_asr_bd_only': 0.661104622059069,
+ 'train_epoch_loss_avg_over_batch': 0.11199585357919717,
+ 'train_ra_bd_only': 0.43851159686300684}
+2025-04-08:13:12:19 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:12:19 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:12:41 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 22.367981910705566 s
+2025-04-08:13:12:47 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0003466290449658015,
+ 'clean_test_loss_avg_over_batch': 0.02127808455047728,
+ 'epoch': 81,
+ 'test_acc': 0.9951,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9664463141025641,
+ 'train_acc_clean_only': 0.9996104907816151,
+ 'train_asr_bd_only': 0.6679465776293823,
+ 'train_epoch_loss_avg_over_batch': 0.11045489135460976,
+ 'train_ra_bd_only': 0.4315525876460768}
+2025-04-08:13:12:47 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:12:47 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:13:08 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.666739225387573 s
+2025-04-08:13:13:14 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00028121461792566984,
+ 'clean_test_loss_avg_over_batch': 0.02466884404096658,
+ 'epoch': 82,
+ 'test_acc': 0.9942,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9661792200854701,
+ 'train_acc_clean_only': 0.9997032530880225,
+ 'train_asr_bd_only': 0.6642165051787504,
+ 'train_epoch_loss_avg_over_batch': 0.11041086998919392,
+ 'train_ra_bd_only': 0.4351820915469429}
+2025-04-08:13:13:15 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:13:15 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:13:37 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 22.02347230911255 s
+2025-04-08:13:13:42 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0003890682099564132,
+ 'clean_test_loss_avg_over_batch': 0.02171018266463888,
+ 'epoch': 83,
+ 'test_acc': 0.9951,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9667634882478633,
+ 'train_acc_clean_only': 0.9996846596178817,
+ 'train_asr_bd_only': 0.6706706706706707,
+ 'train_epoch_loss_avg_over_batch': 0.10930368048735918,
+ 'train_ra_bd_only': 0.42959626292959624}
+2025-04-08:13:13:43 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:13:43 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:14:03 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.60948634147644 s
+2025-04-08:13:14:09 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0006076679450236786,
+ 'clean_test_loss_avg_over_batch': 0.022198323224512036,
+ 'epoch': 84,
+ 'test_acc': 0.9953,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9667467948717948,
+ 'train_acc_clean_only': 0.9995733946655785,
+ 'train_asr_bd_only': 0.6712854757929884,
+ 'train_epoch_loss_avg_over_batch': 0.10797627943639572,
+ 'train_ra_bd_only': 0.4280467445742905}
+2025-04-08:13:14:10 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:14:10 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:14:30 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.477198839187622 s
+2025-04-08:13:14:37 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00030825646761411304,
+ 'clean_test_loss_avg_over_batch': 0.022827564083670468,
+ 'epoch': 85,
+ 'test_acc': 0.9952,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9670305822649573,
+ 'train_acc_clean_only': 0.999554838350676,
+ 'train_asr_bd_only': 0.6743448506092472,
+ 'train_epoch_loss_avg_over_batch': 0.10859926842137152,
+ 'train_ra_bd_only': 0.42480387247537976}
+2025-04-08:13:14:37 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:14:37 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:14:59 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.47737145423889 s
+2025-04-08:13:15:04 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0003655727735054876,
+ 'clean_test_loss_avg_over_batch': 0.023005957827944592,
+ 'epoch': 86,
+ 'test_acc': 0.9951,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9662293002136753,
+ 'train_acc_clean_only': 0.9995919124466703,
+ 'train_asr_bd_only': 0.6661661661661662,
+ 'train_epoch_loss_avg_over_batch': 0.10980925789007391,
+ 'train_ra_bd_only': 0.43360026693360026}
+2025-04-08:13:15:05 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:15:05 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:15:25 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.624390602111816 s
+2025-04-08:13:15:32 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0005635279419333477,
+ 'clean_test_loss_avg_over_batch': 0.022405919199293668,
+ 'epoch': 87,
+ 'test_acc': 0.995,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9666967147435898,
+ 'train_acc_clean_only': 0.9997217894502559,
+ 'train_asr_bd_only': 0.6693386773547094,
+ 'train_epoch_loss_avg_over_batch': 0.10950171500922014,
+ 'train_ra_bd_only': 0.43052772211088847}
+2025-04-08:13:15:32 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:15:33 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:15:54 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.603572130203247 s
+2025-04-08:13:15:59 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0003277928278204316,
+ 'clean_test_loss_avg_over_batch': 0.022054970131072958,
+ 'epoch': 88,
+ 'test_acc': 0.9954,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9662293002136753,
+ 'train_acc_clean_only': 0.9994621262704948,
+ 'train_asr_bd_only': 0.667000668002672,
+ 'train_epoch_loss_avg_over_batch': 0.10912786240283495,
+ 'train_ra_bd_only': 0.43286573146292584}
+2025-04-08:13:16:00 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:16:00 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:16:21 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.547629356384277 s
+2025-04-08:13:16:27 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0003763085557475791,
+ 'clean_test_loss_avg_over_batch': 0.022806136489439095,
+ 'epoch': 89,
+ 'test_acc': 0.9947,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9675146901709402,
+ 'train_acc_clean_only': 0.9997774026600382,
+ 'train_asr_bd_only': 0.6773978315262719,
+ 'train_epoch_loss_avg_over_batch': 0.10664592905797893,
+ 'train_ra_bd_only': 0.4225187656380317}
+2025-04-08:13:16:27 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:16:28 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:16:48 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.90943694114685 s
+2025-04-08:13:16:54 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0003362243647054231,
+ 'clean_test_loss_avg_over_batch': 0.021848572397463118,
+ 'epoch': 90,
+ 'test_acc': 0.9948,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9674479166666666,
+ 'train_acc_clean_only': 0.9996846888620977,
+ 'train_asr_bd_only': 0.6772416096176324,
+ 'train_epoch_loss_avg_over_batch': 0.10659775214317517,
+ 'train_ra_bd_only': 0.4222741693104024}
+2025-04-08:13:16:54 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:16:55 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:17:16 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.369338274002075 s
+2025-04-08:13:17:22 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00040203499264234653,
+ 'clean_test_loss_avg_over_batch': 0.022557705669528274,
+ 'epoch': 91,
+ 'test_acc': 0.9948,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9667134081196581,
+ 'train_acc_clean_only': 0.9997217842900863,
+ 'train_asr_bd_only': 0.6695608615795625,
+ 'train_epoch_loss_avg_over_batch': 0.10729325657041791,
+ 'train_ra_bd_only': 0.4307897812656537}
+2025-04-08:13:17:22 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:17:22 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:17:43 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.721982717514038 s
+2025-04-08:13:17:49 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00040125943479311823,
+ 'clean_test_loss_avg_over_batch': 0.02265315444048058,
+ 'epoch': 92,
+ 'test_acc': 0.9946,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9671641292735043,
+ 'train_acc_clean_only': 0.9995919351547864,
+ 'train_asr_bd_only': 0.6753463528626272,
+ 'train_epoch_loss_avg_over_batch': 0.10597292767264523,
+ 'train_ra_bd_only': 0.4243031213486897}
+2025-04-08:13:17:50 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:17:50 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:18:12 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 22.225605726242065 s
+2025-04-08:13:18:18 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0002729297032691276,
+ 'clean_test_loss_avg_over_batch': 0.022731852080360573,
+ 'epoch': 93,
+ 'test_acc': 0.9948,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9659455128205128,
+ 'train_acc_clean_only': 0.999758866300638,
+ 'train_asr_bd_only': 0.6617156208277704,
+ 'train_epoch_loss_avg_over_batch': 0.10896513669982426,
+ 'train_ra_bd_only': 0.4379172229639519}
+2025-04-08:13:18:19 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:18:19 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:18:41 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 22.123581171035767 s
+2025-04-08:13:18:47 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.000410323421074025,
+ 'clean_test_loss_avg_over_batch': 0.022878568528125746,
+ 'epoch': 94,
+ 'test_acc': 0.9946,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9663628472222222,
+ 'train_acc_clean_only': 0.9997403512676422,
+ 'train_asr_bd_only': 0.6656641604010025,
+ 'train_epoch_loss_avg_over_batch': 0.10741598640656115,
+ 'train_ra_bd_only': 0.4344193817878028}
+2025-04-08:13:18:47 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:18:48 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:19:08 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 20.447004318237305 s
+2025-04-08:13:19:14 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0005692947601807684,
+ 'clean_test_loss_avg_over_batch': 0.022375454736396058,
+ 'epoch': 95,
+ 'test_acc': 0.9948,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9673143696581197,
+ 'train_acc_clean_only': 0.9997774150467429,
+ 'train_asr_bd_only': 0.6752336448598131,
+ 'train_epoch_loss_avg_over_batch': 0.10554906198930027,
+ 'train_ra_bd_only': 0.42456608811748997}
+2025-04-08:13:19:15 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:19:15 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:19:33 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 18.117642879486084 s
+2025-04-08:13:19:37 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0003739459701226762,
+ 'clean_test_loss_avg_over_batch': 0.02261284996145346,
+ 'epoch': 96,
+ 'test_acc': 0.9948,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9667301014957265,
+ 'train_acc_clean_only': 0.9997403175545333,
+ 'train_asr_bd_only': 0.6697263017356475,
+ 'train_epoch_loss_avg_over_batch': 0.10764703181627978,
+ 'train_ra_bd_only': 0.43007343124165553}
+2025-04-08:13:19:37 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:19:38 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:19:51 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 13.470530271530151 s
+2025-04-08:13:19:55 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0004394097416825645,
+ 'clean_test_loss_avg_over_batch': 0.022975210143147108,
+ 'epoch': 97,
+ 'test_acc': 0.9946,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9672809829059829,
+ 'train_acc_clean_only': 0.9997588797180748,
+ 'train_asr_bd_only': 0.6749039906495241,
+ 'train_epoch_loss_avg_over_batch': 0.10515160953355396,
+ 'train_ra_bd_only': 0.424277842711638}
+2025-04-08:13:19:56 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:19:56 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:20:10 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 14.837512493133545 s
+2025-04-08:13:20:17 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.0003393145051004339,
+ 'clean_test_loss_avg_over_batch': 0.022785650690003663,
+ 'epoch': 98,
+ 'test_acc': 0.9947,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9666466346153846,
+ 'train_acc_clean_only': 0.9997588618278274,
+ 'train_asr_bd_only': 0.6687802436175538,
+ 'train_epoch_loss_avg_over_batch': 0.10678203803940843,
+ 'train_ra_bd_only': 0.43083597530452195}
+2025-04-08:13:20:17 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:20:17 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:20:39 [INFO    ] [trainer_cls.py:1800] one epoch training part done, use time = 21.59451913833618 s
+2025-04-08:13:20:45 [INFO    ] [trainer_cls.py:65] {'batch': 468,
+ 'bd_test_loss_avg_over_batch': 0.00045280446832127294,
+ 'clean_test_loss_avg_over_batch': 0.023106407803701403,
+ 'epoch': 99,
+ 'test_acc': 0.9945,
+ 'test_asr': 1.0,
+ 'test_ra': 0.0,
+ 'train_acc': 0.9671307425213675,
+ 'train_acc_clean_only': 0.9996846654671588,
+ 'train_asr_bd_only': 0.6742866677790756,
+ 'train_epoch_loss_avg_over_batch': 0.10567742081072468,
+ 'train_ra_bd_only': 0.425830135157684}
+2025-04-08:13:20:45 [DEBUG   ] [trainer_cls.py:72] return df with np.nan and None converted by str()
+2025-04-08:13:20:45 [DEBUG   ] [trainer_cls.py:88] return df with np.nan and None converted by str()
+2025-04-08:13:20:45 [INFO    ] [save_load_attack.py:141] saving...
+2025-04-08:13:20:45 [DEBUG   ] [save_load_attack.py:142] location : ./record/badnet_mnist_pr_0_1/attack_result.pt
+2025-04-08:13:20:46 [INFO    ] [save_load_attack.py:149] Saved, folder path: ./record/badnet_mnist_pr_0_1
